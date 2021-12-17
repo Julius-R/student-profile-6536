@@ -42,10 +42,14 @@ function Student({ data }) {
 				<h1>
 					{data.firstName} {data.lastName}
 				</h1>
-				<p>Email: {data.email}</p>
-				<p>Company: {data.company}</p>
-				<p>Skill: {data.skill}</p>
-				<p>Average: {`${averageGrades(data.grades).toFixed(2)}%`}</p>
+				<ul>
+					<li>Email: {data.email}</li>
+					<li>Company: {data.company}</li>
+					<li>Skill: {data.skill}</li>
+					<li>
+						Average: {`${averageGrades(data.grades).toFixed(2)}%`}
+					</li>
+				</ul>
 			</div>
 		</section>
 	);
