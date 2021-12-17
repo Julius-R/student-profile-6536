@@ -3,22 +3,38 @@ import React, { useState, useEffect } from "react";
 function App() {
 	const url = "https://api.hatchways.io/assessment/students";
 	const [students, setStudents] = useState([]);
+	const [filteredStudents, setFilteredStudents] = useState([]);
+
+	const filter = (filterValue) => {
+		let results = students.filter((student) => {
+			return (
+				student.firstName.toLowerCase().includes(filterValue.trim()) ||
+				student.lastName.toLowerCase().includes(filterValue.trim())
+			);
+		});
+		setFilteredStudents(results);
+	};
 
 	useEffect(() => {
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
-				setStudents(
-					data.students.map((student) =>
-						Object.assign(student, { tags: [] })
-					)
+				let completedObj = data.students.map((student) =>
+					Object.assign(student, { tags: [] })
 				);
+				setStudents(completedObj);
+				setFilteredStudents(completedObj);
 			});
 	}, []);
 
 	return (
 		<div className="App">
-			{students.map((student) => (
+			<input
+				type="text"
+				onChange={(e) => filter(e.target.value)}
+				placeholder="Search by name"
+			/>
+			{filteredStudents.map((student) => (
 				<Student
 					key={`${student.firstName}${student.lastName}`}
 					data={student}
