@@ -1,18 +1,22 @@
-@mixin font_color($color)
-    color: $color
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap')
 
-@mixin font_size($size)
-    font-size: $size
+*
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    image-rendering: -webkit-optimize-contrast
+    &:before, &:after
+        box-sizing: border-box
+        -moz-box-sizing: border-box
+        image-rendering: -webkit-optimize-contrast
 
-@mixin border_color($color)
-    border: 1px solid $color
-    
+body
+    font-family: 'Raleway', sans-serif
+    font-weight: 300
+    font-size: 16px
+    line-height: .5
 
-
-.txt-sm
-    @include font_size(1.25rem)
-.txt-md
-    @include font_size(1.6rem)
-.txt-lg
-    @include font_size(2.25rem)    
+h1
+    font-weight: 500
+    font-size: 42px
+    text-transform: uppercase
 
