@@ -1,0 +1,18 @@
+@mixin font_color($color)
+    color: $color
+
+@mixin font_size($size)
+    font-size: $size
+
+@mixin border_color($color)
+    border: 1px solid $color
+    
+
+
+.txt-sm
+    @include font_size(1.25rem)
+.txt-md
+    @include font_size(1.6rem)
+.txt-lg
+    @include font_size(2.25rem)    
+
