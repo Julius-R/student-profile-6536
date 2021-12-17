@@ -8,16 +8,14 @@
         font-weight: 300
     .student
         border-bottom: 1px solid #e6e6e6
-        padding: 1rem 2rem
-        display: flex
-        align-items: center
-        margin-bottom: 1rem
+        padding: 2rem
+        display: grid
+        grid-template-columns: 150px 800px 1fr
         .image
             width: 8rem
             height: 8rem
             border-radius: 50%
             border: 1px solid gray
-            margin-right: 2rem
             object-fit: contain
             img
                 width: 100%
@@ -29,3 +27,25 @@
                 list-style: none
                 line-height: 1.5
                 font-size: .85rem
+        .toggle
+            button
+                background: none
+                border: none
+                svg
+                    width: 1.5rem
+                    height: 1.5rem
+                    fill: #787878
+                    transition: fill .2s ease-in-out        
+                &:hover
+                    svg
+                        cursor: pointer
+                        fill: #020809
+        .grades
+            grid-column: 2 / 3
+            margin: 2rem 0 0 2rem
+            ul
+                li
+                    margin-bottom: 1rem
+                    .left-mg
+                        margin-left: 1rem
+

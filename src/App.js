@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BsPlusLg, BsDashLg } from "react-icons/bs";
 
 function App() {
 	const url = "https://api.hatchways.io/assessment/students";
@@ -45,6 +46,7 @@ function App() {
 }
 
 function Student({ data }) {
+	const [toggle, setToggle] = useState(false);
 	const averageGrades = (arrayToConvert) => {
 		let arr = arrayToConvert.map((elem) => parseInt(elem, 10));
 		return arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -67,6 +69,29 @@ function Student({ data }) {
 					</li>
 				</ul>
 			</div>
+			<div className="toggle">
+				{!toggle ? (
+					<button onClick={() => setToggle(!toggle)}>
+						<BsPlusLg />
+					</button>
+				) : (
+					<button onClick={() => setToggle(!toggle)}>
+						<BsDashLg />
+					</button>
+				)}
+			</div>
+			{toggle && (
+				<div className="grades">
+					<ul>
+						{data.grades.map((grade, index) => (
+							<li key={`${index}-${grade}`}>
+								Test {index + 1}
+								<span className="left-mg">{grade}%</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 		</section>
 	);
 }
